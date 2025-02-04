@@ -1,15 +1,15 @@
 const response = await fetch("./shader.wgsl");
 const shader = await response.text();
-const GRID_SIZE = 64;
+const GRID_SIZE = 256;
 const canvas = document.querySelector("canvas");
 // NOTE: controllare se il browser supporta webGPU
 if (!navigator.gpu) {
   throw new Error("WebGPU not supported on this browser.");
 }
 
-for (let i = 0; i <= GRID_SIZE * GRID_SIZE; i++) {
+/* for (let i = 0; i <= GRID_SIZE * GRID_SIZE; i++) {
   console.log("x:", i % GRID_SIZE, "y:", Math.floor(i / GRID_SIZE))
-}
+} */
 
 
 /**
@@ -385,7 +385,7 @@ const bindGroups = [
 
 // definiamo ogni quanto dobbiamo refreshare il render loop e
 // ci servirà tenere traccia di quale iterazione sta avvenendo(step)
-const UPDATE_INTERVAL = 200; // Update every 200ms (5 times/sec)
+const UPDATE_INTERVAL = 100; // Update every 200ms (5 times/sec)
 let step = 0; // Track how many simulation steps have been run
 
 function updateGrid() {
